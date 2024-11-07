@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark"  style="background-color: #161716 !important;">
+    <a class="navbar-brand" href="/">Web Scanner</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/about">Hakkımızda <span class="sr-only"></span></a>
+        </li>
+       
+       
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'user:register' %}">Kayıt Olun <span class="sr-only"></span></a>
+        </li>   
+        <li class="nav-item active">
+            <a class="nav-link" href="{% url 'user:login' %}">Giriş Yap <span class="sr-only"></span></a>
+        </li>     
+      </ul>
+      
+    </div>
+  </nav>

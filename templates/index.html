@@ -1,0 +1,39 @@
+
+{% extends "layout.html" %}
+{% load static %}
+{% block title %}Ana Sayfa{% endblock %}
+
+{% block body %}
+<div class="background">
+    <div class="content">
+        <h1 id="welcome-header"></h1>
+        <p id="welcome-message"></p>
+        
+    </div>
+</div>
+
+<script>
+    function typeWriter(element, text, delay) {
+        let index = 0;
+        element.style.opacity = '1'; // Yazı görünür hale getirilir
+
+        function type() {
+            if (index < text.length) {
+                element.textContent += text.charAt(index);
+                index++;
+                setTimeout(type, delay); // Her harften sonra belirli bir zaman aralığı ile çağır
+            }
+        }
+
+        type();
+    }
+
+    // Sayfa yüklendiğinde yazıları ekle
+    window.onload = function () {
+        typeWriter(document.getElementById('welcome-header'), 'Hoş Geldiniz!', 100); // 100 ms aralıkla yaz
+        setTimeout(() => {
+            typeWriter(document.getElementById('welcome-message'), 'Tarama yapabilmek için kayıt olmanız veya giriş yapmanız gerekmektedir.', 30); // 100 ms aralıkla yaz
+        }, 300); // 1 saniye bekle
+    };
+</script>
+{% endblock %}

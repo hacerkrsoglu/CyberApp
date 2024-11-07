@@ -1,0 +1,70 @@
+/* Tüm ekranı kapsayan bir arka plan ayarı */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    font-family: 'Montserrat', Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+.background {
+    background-image: url("{% static 'images/resim.jpg' %}");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff; /* Yazı rengini beyaz yap */
+}
+#welcome-header{
+
+    font-family: "Doto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: <weight>;
+    font-style: Medium 500;
+    font-variation-settings: "ROND" 0;
+    font-size: 100px;
+    
+
+}
+#welcome-message{
+    font-family: "Doto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: <weight>;
+    font-style: Medium 500;
+    font-variation-settings: "ROND" 0;
+    font-size: 30px;
+}
+.content {
+    
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 600px;
+    text-align: center;
+}
+
+.transparent-box {
+    
+    padding: 40px;
+    border-radius: 10px;
+    max-width: 600px; /* İçeriğin genişliğini sınırlamak için */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); /* Hafif bir gölge efekti */
+}
+
+.btn {
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: #314527;
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #223d13;
+}

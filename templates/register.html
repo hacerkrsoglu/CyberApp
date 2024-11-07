@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block body %}
+{% load crispy_forms_tags %}
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+    <div class="row w-100">
+        <div class="col-md-6 offset-md-3">
+            <h3>Giriş Yap</h3>
+            <hr>
+            <form method="post">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <br>
+                <button type="submit" class="btn btn-black">Kayıt </button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock body %}
