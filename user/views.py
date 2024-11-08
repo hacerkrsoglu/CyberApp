@@ -18,7 +18,7 @@ def register(request):
         newUser.save()
 
         login(request,newUser)
-        messages.success(request,"Başarıyla Kayıt OLdunuz")
+        messages.success(request,"Başarıyla Kayıt Oldunuz")
         return redirect("index")
     context = {
         "form": form

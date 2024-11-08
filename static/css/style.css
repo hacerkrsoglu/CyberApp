@@ -38,6 +38,15 @@ html, body {
     font-variation-settings: "ROND" 0;
     font-size: 30px;
 }
+
+.message-container {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%; /* Gerektiği kadar genişlik ayarlayın */
+    z-index: 10;
+}
 .content {
     
     padding: 20px;

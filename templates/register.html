@@ -4,13 +4,23 @@
 <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
     <div class="row w-100">
         <div class="col-md-6 offset-md-3">
-            <h3>Giriş Yap</h3>
+            {% if messages %}
+                {% for message in messages %}
+                {% if message.tags == "info" %}
+                <div class="alert alert-danger">{{ message }}</div>
+                {% else %}
+                <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+
+                {% endif %}
+                {% endfor %}      
+            {% endif %}
+            <h3>Kayıt Ol</h3>
             <hr>
             <form method="post">
                 {% csrf_token %}
                 {{ form|crispy }}
                 <br>
-                <button type="submit" class="btn btn-black">Kayıt </button>
+                <button type="submit" class="btn btn-black">Kayıt Ol </button>
             </form>
         </div>
     </div>
