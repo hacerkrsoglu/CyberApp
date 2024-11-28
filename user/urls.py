@@ -10,6 +10,7 @@ urlpatterns = [
     path('login/', views.loginUser, name="login"),
     path('logout/', views.logoutUser, name="logout"),
     path('dashboard/', views.dashboard, name="dashboard"),
+    path('scanner/', include('scanner.urls')),
 
 
 

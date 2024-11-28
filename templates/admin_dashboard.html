@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+{% block content %}
+  <h2>Onay Bekleyen Siteler</h2>
+  <ul>
+    {% for site in sites %}
+      <li>{{ site.url }} - 
+        <a href="{% url 'approve_url' site.id %}">Onayla</a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}
