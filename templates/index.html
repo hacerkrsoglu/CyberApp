@@ -27,6 +27,15 @@
 
         type();
     }
+    const messages = document.querySelector('.message-container');
+        if (messages) {
+            setTimeout(() => {
+                messages.style.opacity = '0'; // Mesaj kutusunu kaybolmaya başlat
+                setTimeout(() => {
+                    messages.remove(); // Kaybolduktan sonra tamamen kaldır
+                }, 300); // 0.3 saniye sonra kutuyu kaldır
+            }, 1000); // 1 saniye sonra kaybolmasını başlat
+        }
 
     // Sayfa yüklendiğinde yazıları ekle
     window.onload = function () {

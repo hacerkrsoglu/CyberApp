@@ -1,0 +1,116 @@
+/* Tüm ekranı kapsayan bir arka plan ayarı */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    font-family: 'Montserrat', Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+.background {
+    background-image: url("{% static 'images/resim.jpg' %}");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff; /* Yazı rengini beyaz yap */
+}
+#welcome-header {
+    font-family: "Doto", sans-serif;
+    font-weight: 500; /* 500 uygun bir font-weight değeri */
+    font-style: normal; /* veya italic, eğer gerekli ise */
+    font-size: 100px;
+}
+
+#welcome-message {
+    font-family: "Doto", sans-serif;
+    font-weight: 500; /* Aynı şekilde font-weight */
+    font-style: normal; /* veya italic */
+    font-size: 30px;
+}
+
+.message-container {
+    position: fixed;
+    top: 10%;  /* Yükseklik ayarı */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%; /* Mesaj kutularının genişliği */
+    z-index: 9999; /* Diğer öğelerin üstünde olması için */
+}
+.message-container .alert {
+    display: block; /* Başlangıçta görünür yapıyoruz */
+    animation: slide-in 0.8s ease-out; /* 0.8 saniyede kayarak gelsin */
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 600px;
+    margin-bottom: 15px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Hafif gölge */
+}
+/* Mesaj kutusunun kayarak ekrana gelmesi için animasyon */
+@keyframes slide-in {
+    from {
+        transform: translateY(-50px); /* Yukarıdan kayarak başla */
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0); /* Ekranın normal yerine gelsin */
+        opacity: 1;
+    }
+}
+
+/* Farklı türdeki mesaj kutuları için renkler */
+.alert-success {
+    background-color: #4caf50;  /* Yeşil: Başarı */
+    color: white;
+}
+
+.alert-info {
+    background-color: #2196f3;  /* Mavi: Bilgi */
+    color: white;
+}
+
+.alert-danger {
+    background-color: #f44336;  /* Kırmızı: Hata */
+    color: white;
+}
+
+/* Mesaj kutularının kaybolma animasyonu */
+.fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+}
+.content {
+    
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 600px;
+    text-align: center;
+}
+
+.transparent-box {
+    
+    padding: 40px;
+    border-radius: 10px;
+    max-width: 600px; /* İçeriğin genişliğini sınırlamak için */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); /* Hafif bir gölge efekti */
+}
+
+.btn {
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: #314527;
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #223d13;
+}

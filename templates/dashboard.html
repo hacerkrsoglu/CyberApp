@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block title %}Dashboard{% endblock %}
+
+{% block body %}
+<div class="dashboard-page">
+    <div class="background">
+        <h1 id="welcome-header"></h1>
+        <p id="welcome-message"></p>
+    </div>
+</div>
+<script>
+    function typeWriter(element, text, delay) {
+        let index = 0;
+        element.style.opacity = '1';
+
+        function type() {
+            if (index < text.length) {
+                element.textContent += text.charAt(index);
+                index++;
+                setTimeout(type, delay);
+            }
+        }
+
+        type();
+    }
+
+    window.onload = function () {
+        const username = "{{ request.user.username }}";
+
+        // Animasyonları uygulama
+        document.querySelector('.dashboard-page .background').style.animation = 'slide-in 0.8s ease-out forwards';
+
+        // Typewriter animasyonu
+        typeWriter(document.getElementById('welcome-header'), 'Hoş Geldin ' + username, 100);
+        setTimeout(() => {
+            typeWriter(document.getElementById('welcome-message'), 'Bu sitede izinli olduğunuz veya kendi siteniz üzerinde tarama yapabilir bu şekilde açıklar varsa bu kısımları kapatabilirsiniz. Admin ile iletişime geçtikten sonraki geri dönüş ile birlikte tarama yapmak istediğiniz siteye tarama erişiminiz açılacaktır. İzinli olduğu veya kendi sitesi olduğunun kesinliğini sunamayan kullanıcılara herhangi tarama izni verilmemektedir. Güvenli kalıp güvenle kalmanız dileğiyle.', 30);
+        }, 300);
+
+        // Mesaj kutusunun kaybolması işlemi
+        const messages = document.querySelector('.message-container');
+        if (messages) {
+            setTimeout(() => {
+                messages.style.opacity = '0';
+                setTimeout(() => {
+                    messages.remove();
+                }, 300);
+            }, 1000);
+        }
+    };
+</script>
+{% endblock %}

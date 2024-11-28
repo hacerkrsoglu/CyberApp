@@ -4,7 +4,14 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import login,authenticate,logout
 
+from django.contrib.auth.decorators import login_required
+
+def index(request):
+    if request.user.is_authenticated:  # Kullanıcı giriş yapmışsa
+        return redirect("user:dashboard")  # Dashboard'a yönlendir
+    return render(request, "index.html")  # Giriş yapmamışsa ana sayfa göster 
 # Create your views here.
+
 def register(request):
     form = RegisterForm(request.POST or None)
     if form.is_valid():
@@ -19,7 +26,7 @@ def register(request):
 
         login(request,newUser)
         messages.success(request,"Başarıyla Kayıt Oldunuz")
-        return redirect("index")
+        return redirect("user:dashboard")
     context = {
         "form": form
     }
@@ -43,10 +50,14 @@ def loginUser(request):
             return render(request,"login.html",context)
         messages.success(request,"Başarıyla Giriş Yaptınız.")
         login(request,user)
-        return redirect("index")
+        return redirect("user:dashboard")
     return render(request,"login.html",context)
 
 def logoutUser(request):
     logout(request)
     messages.success(request,"Başarıyla Çıkış Yaptınız")
     return redirect("index")
+
+@login_required(login_url="user:login")
+def dashboard(request):
+    return render(request,"dashboard.html")
