@@ -132,5 +132,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-ZAP_API_KEY = '8v9sajbntsufp13l4bss1kc27s'  # ZAP API anahtarınız
+ZAP_API_KEY = ''  # ZAP API anahtarınız
 ZAP_URL = 'http://localhost:8080'  # ZAP URL adresi
