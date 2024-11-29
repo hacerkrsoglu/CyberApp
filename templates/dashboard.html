@@ -3,10 +3,11 @@
 {% block title %}Dashboard{% endblock %}
 
 {% block body %}
-<div class="dashboard-page">
-    <div class="background">
-        <h1 id="welcome-header"></h1>
-        <p id="welcome-message"></p>
+<div class="background">
+    <!-- Text container -->
+    <div id="text-container">
+        <h1 id="custom-header"></h1>
+        <p id="custom-message"></p>
     </div>
 </div>
 <script>
@@ -29,12 +30,12 @@
         const username = "{{ request.user.username }}";
 
         // Animasyonları uygulama
-        document.querySelector('.dashboard-page .background').style.animation = 'slide-in 0.8s ease-out forwards';
+        document.querySelector('.background').style.animation = 'slide-in 0.8s ease-out forwards';
 
         // Typewriter animasyonu
-        typeWriter(document.getElementById('welcome-header'), 'Hoş Geldin ' + username, 100);
+        typeWriter(document.getElementById('custom-header'), 'Hoş Geldin ' + username, 100);
         setTimeout(() => {
-            typeWriter(document.getElementById('welcome-message'), 'Bu sitede izinli olduğunuz veya kendi siteniz üzerinde tarama yapabilir bu şekilde açıklar varsa bu kısımları kapatabilirsiniz. Admin ile iletişime geçtikten sonraki geri dönüş ile birlikte tarama yapmak istediğiniz siteye tarama erişiminiz açılacaktır. İzinli olduğu veya kendi sitesi olduğunun kesinliğini sunamayan kullanıcılara herhangi tarama izni verilmemektedir. Güvenli kalıp güvenle kalmanız dileğiyle.', 30);
+            typeWriter(document.getElementById('custom-message'), 'Bu sitede izinli olduğunuz veya kendi siteniz üzerinde tarama yapabilir bu şekilde açıklar varsa bu kısımları kapatabilirsiniz. Admin ile iletişime geçtikten sonraki geri dönüş ile birlikte tarama yapmak istediğiniz siteye tarama erişiminiz açılacaktır. İzinli olduğu veya kendi sitesi olduğunun kesinliğini sunamayan kullanıcılara herhangi tarama izni verilmemektedir. Güvenli kalıp güvenle kalmanız dileğiyle.', 30);
         }, 300);
 
         // Mesaj kutusunun kaybolması işlemi
