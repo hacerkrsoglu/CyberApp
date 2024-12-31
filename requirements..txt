@@ -1,0 +1,6 @@
+Django==5.1.2
+python-decouple
+crispy-forms
+crispy-bootstrap4
+django-ckeditor-5
+django-cleanup
