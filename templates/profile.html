@@ -1,0 +1,63 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<div class="user-info-container profile">
+    <div class="user-detail-wrapper">
+        <div class="user-detail-header">
+            <h1>Kullanıcı Bilgileri</h1>
+        </div>
+
+        <div class="user-detail-content">
+            <div class="user-meta">
+                <div class="user-avatar">
+                    {{ user.username|first|upper }}
+                </div>
+                <div class="user-info">
+                    <h2>{{ user.username }}</h2>
+                    <p><strong>İsim:</strong> {{ user.first_name }}</p>
+                    <p><strong>Soy İsim :</strong> {{ user.last_name }}</p>
+            
+                    <p><strong>E-posta:</strong> {{ user.email }}</p>
+
+                    <p><strong>Kayıt Tarihi:</strong> {{ user.date_joined|date:"d M Y H:i" }}</p>
+                </div>
+            </div>
+
+            <!-- Onaylanmış URL'ler -->
+            <div class="user-urls">
+                <h4>Onaylanmış URL'ler</h4>
+                {% if approved_sites %}
+                    <ul>
+                        {% for site in approved_sites %}
+                            <li>{{ site.url }}</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>Henüz onaylanmış URL'niz yok.</p>
+                {% endif %}
+            </div>
+
+            <!-- Onay Bekleyen URL'ler -->
+            <div class="user-urls">
+                <h4>Onay Bekleyen URL'ler</h4>
+                {% if unapproved_sites %}
+                    <ul>
+                        {% for site in unapproved_sites %}
+                            <li>{{ site.url }} - <span class="text-warning">Onay Bekliyor</span></li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>Henüz onay bekleyen URL'niz yok.</p>
+                {% endif %}
+            </div>
+
+            <div class="user-actions">
+                <a href="{% url 'user:update_profile' %}" class="btn btn-black w-100">Bilgileri Düzenle</a>
+               
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

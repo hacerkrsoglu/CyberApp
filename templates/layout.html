@@ -7,11 +7,17 @@
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Doto:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Reenie+Beanie&family=Rubik+Iso&family=Sixtyfour+Convergence&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Doto:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Doto:wght@100..900&family=Eater&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Reenie+Beanie&family=Rubik+Iso&family=Sixtyfour+Convergence&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&family=Doto:wght@100..900&family=Eater&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Reenie+Beanie&family=Rubik+Iso&family=Silkscreen:wght@400;700&family=Sixtyfour+Convergence&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&family=Doto:wght@100..900&family=Eater&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Press+Start+2P&family=Reenie+Beanie&family=Rubik+Iso&family=Silkscreen:wght@400;700&family=Sixtyfour+Convergence&display=swap" rel="stylesheet">
     <title>{% block title %}Web Scanner{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
-<body class="background" style="background-image: url('{% static "images/resim.jpg" %}');">
+<body class="background" style="background-image: url('{% static "images/resim1.png" %}');">
     {% include "includes/navbar.html" %}
     
     <div class="container">
@@ -30,8 +36,9 @@
         {% block body %}
         {% endblock body %}
     </div>
-    <script src="{% static 'js/bootstrap.min'%}"> </script>
-    <script src="{% static 'js/jquery-3.2.1.min'%}"> </script>
+    <script src="{% static 'js/jquery-3.2.1.min.js'%}"> </script>
+    <script src="{% static 'js/bootstrap.min.js'%}"> </script>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
     
     
     

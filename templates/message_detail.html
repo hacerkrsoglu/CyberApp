@@ -1,0 +1,61 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<div class="message-detail">
+    <div class="message-container ">
+        <div class="message-detail-wrapper">
+            <div class="message-detail-header">
+                <a href="{% url 'messaging:messages' %}" class="back-button">← Mesaj Kutusuna Dön</a>
+                <h1>{{ message.subject }}</h1>
+            </div>
+
+            <div class="message-detail-content">
+                <div class="message-meta">
+                    <div class="message-sender-avatar">
+                        {{ message.sender.username|first|upper }}
+                    </div>
+                    <div class="message-sender-info">
+                        <h2>{{ message.sender.username }}</h2>
+                        <p>{{ message.created_at|date:"d M Y H:i" }}</p>
+                    </div>
+                    <div class="message-status">
+                        <span class="status-badge {% if message.is_read %}read{% else %}unread{% endif %}">
+                            {% if message.is_read %}Okundu{% else %}Okunmadı{% endif %}
+                        </span>
+                    </div>
+                </div>
+
+                <div class="message-body">
+                    <div class="message-content">
+                        {{ message.content|safe }}
+                    </div>
+                </div>
+
+                {% if message.attachments.exists %}
+                <div class="message-attachments">
+                    <h3>Ekler</h3>
+                    <div class="attachments-list">
+                        {% for attachment in message.attachments.all %}
+                        <div class="attachment-item">
+                            <i class="attachment-icon">📄</i>
+                            <a href="{{ attachment.file.url }}" download>
+                                {{ attachment.file.name }}
+                            </a>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+                <div class="message-actions">
+                    {% if user == message.receiver %}
+                    <a href="{% url 'messaging:send_message' %}" class="btn-reply">Yanıtla</a>
+                {% endif %}
+                   
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

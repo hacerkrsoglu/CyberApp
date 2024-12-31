@@ -1,0 +1,110 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<div class="messages">
+    <div class="message-container">
+        <div class="inbox-wrapper">
+            <div class="inbox-header">
+                <h1>Mesaj Kutunuz</h1>
+                <div class="tabs">
+                    <button class="tab active" data-tab="received">Gelen Mesajlar</button>
+                    <button class="tab" data-tab="sent">Gönderilen Mesajlar</button>
+                </div>
+            </div>
+
+            <div class="inbox-content">
+                <!-- Alınan Mesajlar -->
+                <div class="message-list received-messages active">
+                    {% if received_messages %}
+                        {% for message in received_messages %}
+                        <div class="message-item {% if not message.is_read %}unread{% endif %}">
+                            <div class="message-avatar">
+                                {{ message.sender.username|first|upper }}
+                            </div>
+                            <div class="message-details">
+                                <div class="message-header">
+                                    <h3>{{ message.subject }}</h3>
+                                    <span class="message-date">{{ message.created_at|date:"d M Y" }}</span>
+                                </div>
+                                <div class="message-preview">
+                                    <p>{{ message.sender.username }} tarafından gönderildi</p>
+                                </div>
+                                <div class="message-actions">
+                                    <a href="{% url 'messaging:message_detail' message.id %}" class="btn-view">Görüntüle</a>
+                                    {% if not message.is_read %}
+                                        <span class="badge-new">Yeni</span>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="empty-state">
+                            <img src="/static/images/empty-inbox.svg" alt="Boş Mesaj Kutusu">
+                            <p>Henüz hiç mesajınız yok</p>
+                        </div>
+                    {% endif %}
+                </div>
+
+                <!-- Gönderilen Mesajlar -->
+                <div class="message-list sent-messages">
+                    {% if sent_messages %}
+                        {% for message in sent_messages %}
+                        <div class="message-item">
+                            <div class="message-avatar">
+                                {{ message.receiver.username|first|upper }}
+                            </div>
+                            <div class="message-details">
+                                <div class="message-header">
+                                    <h3>{{ message.subject }}</h3>
+                                    <span class="message-date">{{ message.created_at|date:"d M Y" }}</span>
+                                </div>
+                                <div class="message-preview">
+                                    <p>{{ message.receiver.username }} kişisine gönderildi</p>
+                                </div>
+                                <div class="message-actions">
+                                    <a href="{% url 'messaging:message_detail' message.id %}" class="btn-view">Görüntüle</a>
+                                    {% if not message.is_read %}
+                                        <span class="badge-pending">Okunmadı</span>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="empty-state">
+                            <img src="/static/images/empty-sent.svg" alt="Gönderilen Mesaj Yok">
+                            <p>Henüz hiç mesaj göndermediniz</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const tabs = document.querySelectorAll('.tab');
+    const messageLists = document.querySelectorAll('.message-list');
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+          
+            tabs.forEach(t => t.classList.remove('active'));
+            
+           
+            this.classList.add('active');
+
+           
+            messageLists.forEach(list => list.classList.remove('active'));
+
+            
+            const tabType = this.getAttribute('data-tab');
+            document.querySelector(`.${tabType}-messages`).classList.add('active');
+        });
+    });
+});
+</script>
+{% endblock %}

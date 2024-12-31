@@ -18,14 +18,21 @@ from django.contrib import admin
 from django.urls import path,include
 from user import views
 from webscanner import views
-
+from django.conf import settings
+from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.index, name = "index"),
     path('about/', views.about, name = "about"),
     path('user/', include("user.urls")),
     path('scanner/', include("scanner.urls")),
+    path('messaging/', include("messaging.urls")),
+    
     
    
 
 ]
+
+urlpatterns += [
+    path("ckeditor5/", include('django_ckeditor_5.urls')),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

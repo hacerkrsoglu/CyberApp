@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+{% load crispy_forms_tags %}
+<div class="profile-update-container d-flex justify-content-center align-items-center update-profile"
+    style="min-height: 100vh;">
+    <div class="profile-update-wrapper w-100">
+        <div class="form-container">
+            <div class="profile-update-header text-center">
+                <h3>Profilinizi Güncelleyin</h3>
+            </div>
+            <hr>
+            <form method="post" enctype="multipart/form-data" class="profile-update-form">
+                {% csrf_token %}
+                <div class="form-group">
+                    {{ form|crispy }}
+                </div>
+                <div class="form-actions text-center">
+                    <button type="submit" class="btn btn-black w-100">Güncelle</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

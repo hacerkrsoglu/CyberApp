@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<div class="container result">
+    
+    
+
+    <h3 style="margin-top: 1900px; margin-bottom: 10px; color: #ccffcc ; font-weight: 900;">Güvenlik Açıkları</h3>
+    <p style="font-weight: 800; color: wheat;"><strong>URL:</strong> {{ site.url }}</p>
+    {% if results %}
+    <ul class="vulnerabilities-list">
+        {% for result in results %}
+        <li class="vulnerability-item">
+            <div class="vulnerability-header">
+                <h4>{{ result.name }}</h4>
+                <span class="risk-level {{ result.risk_level|lower }}">{{ result.risk_level }}</span>
+            </div>
+            <p ><strong>Açıklama:</strong> {{ result.description }}</p>
+            <p ><strong>Çözüm:</strong> {{ result.solution }}</p>
+            {% if result.references %}
+            <p><strong>Kaynaklar:</strong>
+                {% for reference in result.references %}
+                <a href="{{ reference.url }}" target="_blank">{{ reference.name }}</a>{% if not forloop.last %}, {% endif %}
+                {% endfor %}
+            </p>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>Tarama sonucu bulunamadı.</p>
+    {% endif %}
+
+    <button type="button" class="btn btn-black" onclick="window.location.href='{% url 'scanner:scanner' %}'">Tarama Listesine Geri Dön</button>
+
+</div>
+
+{% endblock %}

@@ -1,28 +1,86 @@
 {% extends "layout.html" %}
 {% block body %}
 {% load crispy_forms_tags %}
-<div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+<div class="container d-flex justify-content-center align-items-center register" style="min-height: 100vh;">
     <div class="row w-100">
-        <div class="col-md-6 offset-md-3">
+        <div class="col-md-6 offset-md-3" style="margin-top:500px;">
+          
             {% if messages %}
-                {% for message in messages %}
-                {% if message.tags == "info" %}
-                <div class="alert alert-danger">{{ message }}</div>
-                {% else %}
-                <div class="alert alert-{{ message.tags }}">{{ message }}</div>
-
-                {% endif %}
-                {% endfor %}      
+                <div class="message-container">
+                    {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }} custom-alert 
+                            {% if message.tags == 'success' %}alert-success-custom
+                            {% elif message.tags == 'error' %}alert-error-custom
+                            {% elif message.tags == 'warning' %}alert-warning-custom
+                            {% elif message.tags == 'info' %}alert-info-custom
+                            {% endif %}"
+                            role="alert">
+                            <div class="alert-icon">
+                                {% if message.tags == 'success' %}✓{% endif %}
+                                {% if message.tags == 'error' %}✖{% endif %}
+                                {% if message.tags == 'warning' %}⚠{% endif %}
+                                {% if message.tags == 'info' %}ℹ{% endif %}
+                            </div>
+                            <div class="alert-content">
+                                {{ message }}
+                            </div>
+                            <button type="button" class="close-alert">&times;</button>
+                        </div>
+                    {% endfor %}
+                </div>
             {% endif %}
-            <h3>Kayıt Ol</h3>
+
+            
             <hr>
-            <form method="post">
-                {% csrf_token %}
-                {{ form|crispy }}
-                <br>
-                <button type="submit" class="btn btn-black">Kayıt Ol </button>
-            </form>
+            <div class="form-container">
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <div class="form-check mt-3">
+                        {{ form.terms_agreed }}
+                        
+                        <label class="form-check-label" for="id_terms_agreed">
+                            <a href="{% url 'user:privacy_policy' %}" target="_blank">
+                                Gizlilik Politikasını</a> okudum ve kabul ediyorum.
+                           
+                        </label>
+                    </div>
+                    <br>
+                    <button type="submit" class="btn btn-black w-100">Kayıt Ol</button>
+                </form>
+                
+            </div>
         </div>
     </div>
 </div>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const alerts = document.querySelectorAll('.custom-alert');
+    alerts.forEach(alert => {
+        // Mesajları göstermek içn
+        setTimeout(() => {
+            alert.classList.add('show');
+        }, 100);
+
+        // Otomatik olarak kaybolması için
+        setTimeout(() => {
+            alert.style.opacity = '0';
+            alert.style.transform = 'translateX(100%)';
+            setTimeout(() => alert.remove(), 500);
+        }, 60000);
+
+        // Manuel kapatmak için
+        const closeButton = alert.querySelector('.close-alert');
+        closeButton.addEventListener('click', () => {
+            alert.style.opacity = '0';
+            alert.style.transform = 'translateX(100%)';
+            setTimeout(() => alert.remove(), 500);
+        });
+    });
+});
+</script>
+
+
 {% endblock body %}

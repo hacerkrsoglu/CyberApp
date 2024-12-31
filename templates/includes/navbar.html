@@ -1,39 +1,62 @@
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark"  style="background-color: #161716 !important;">
-  <a class="navbar-brand" href="{% if request.user.is_authenticated %}{% url 'user:dashboard' %}{% else %}{% url 'index' %}{% endif %}">Web Scanner</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="{% url 'about' %}">Hakkımızda <span class="sr-only"></span></a>
-        </li>
-       
-       
-      </ul>
-      <ul class="navbar-nav ml-auto">
-        
-        {% if request.user.is_authenticated %} 
-        
-        
-       
-        <li class="nav-item active">
-          <a class="nav-link" href="{% url 'scanner:scanner' %}">Tarama </a>
-        </li>  
-        <li class="nav-item active">
-          <a class="nav-link" href="{% url 'user:logout' %}">Çıkış Yap</a>
-        </li> 
-        {% else %}
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark" style="background-color: #161716 !important;">
+  <a class="navbar-brand"
+    href="{% if request.user.is_authenticated %}{% url 'user:dashboard' %}{% else %}{% url 'index' %}{% endif %}">Web
+    Scanner</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'about' %}">Hakkımızda <span class="sr-only"></span></a>
+      </li>
 
-        <li class="nav-item active">
-          <a class="nav-link" href="{% url 'user:login' %}">Giriş Yap <span class="sr-only"></span></a>
-        </li> 
-        {% endif %}
-        <li class="nav-item active">
-          <a class="nav-link" href="{% url 'user:register' %}">Kayıt Olun <span class="sr-only"></span></a>
-        </li>   
-       
-      </ul>
-      
-    </div>
-  </nav>
+
+    </ul>
+
+    <ul class="navbar-nav ml-auto">
+
+      {% if request.user.is_authenticated %}
+
+
+
+
+
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Hesabım
+        </a>
+        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{% url 'user:profile' %}">Kullanıcı Bilgilerim</a>
+          <a class="dropdown-item" href="{% url 'user:change_password' %}">Şifremi Değiştir</a>
+          <a class="dropdown-item" href="{% url 'messaging:messages' %}">Mesajlarım</a>
+          <a class="dropdown-item" href="{% url 'messaging:send_message' %}">Mesaj Gönder</a>
+          <a class="dropdown-item" href="{% url 'scanner:scanner' %}">Tarama </a>
+        
+
+
+
+        </div>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'user:logout' %}">Çıkış Yap</a>
+      </li>
+      {% else %}
+
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'user:login' %}">Giriş Yap <span class="sr-only"></span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'user:register' %}">Kayıt Olun <span class="sr-only"></span></a>
+      </li>
+      {% endif %}
+
+
+    </ul>
+
+
+  </div>
+</nav>

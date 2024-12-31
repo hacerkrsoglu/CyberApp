@@ -3,9 +3,65 @@ html, body {
     padding: 0;
     height: 100%;
     width: 100%;
-    font-family: 'Montserrat', Arial, sans-serif;
+    font-family: 'Doto', Arial, sans-serif;
     overflow-x: hidden;
+    font-weight: 800;
 }
+.dropdown-menu {
+    width: 100%;  /* Menüyü tamamen ekran genişliğine yay */
+    background-color: #161716;  /* Arka plan rengini siyah-yeşil tonunda */
+    color: white;  /* Yazı rengi beyaz */
+    border-radius: 0.375rem;  /* Kenarlara yuvarlaklık */
+    border: 1px solid rgba(255,255,255,0.2);  /* Açık renkli kenarlık */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);  /* Gölgelendirme efekti */
+    padding: 10px 0;  
+    white-space: nowrap;  
+    overflow: hidden;  
+    text-overflow: ellipsis; 
+    font-family: 'Doto', sans-serif;  
+    font-weight: 800;
+}
+
+/* Küçük Ekranlar için Dropdown Menüsünü Daraltma */
+@media (max-width: 768px) {
+    .dropdown-menu {
+        width: 90%;  
+        max-width: 300px;  
+        word-wrap: break-word;  
+        padding: 10px;  
+    }
+}
+
+.dropdown-item {
+    color: white;  /* Her zaman beyaz yazı */
+    white-space: normal;  
+    word-wrap: break-word;  
+    padding: 8px 16px;  
+    font-size: 1rem;  
+    font-family: 'Doto', sans-serif;  
+    font-weight: 800;
+    background-color: transparent;  /* Arka plan transparan */
+}
+
+/* Herhangi bir hover efektini kaldırmak için */
+.dropdown-item:hover,
+.dropdown-item:focus {
+    color: white;  /* Hover'da da beyaz kalması */
+    background-color: rgba(255,255,255,0.1);  /* Çok hafif bir vurgu */
+}
+
+
+
+
+
+h2, h3 {
+    margin-top: 200px;  /* Üstten 20px boşluk */
+    margin-bottom: 5px;  /* Alt boşluğu azalt */
+    
+}
+/* Tarama sonuçları sayfasına özel H2 ve H3 stilleri */
+
+
 #text-container {
     display: flex;
     flex-direction: column; /* Dikey hizalama */
@@ -16,28 +72,35 @@ html, body {
     left: 50%;
     transform: translate(-50%, -50%); /* Merkezi pozisyonlama */
     text-align: center; /* İçeriklerin merkezde hizalanması */
-    width: 100%; /* Gerektiği kadar genişlik ayarlayın */
+    width: 80%; /* Gerektiği kadar genişlik ayarlayın */
 }
 #custom-header{
+    background-color: rgba(0, 0, 0, 0.8) ;
+
     font-family: "Doto", sans-serif;
     font-optical-sizing: auto;
-    font-weight: 500;
-    font-size: 100px;
+    font-weight: 700;
+    font-size: 80px;
     text-align: center; /* Ortalamak için */
     margin: 0; /* Gereksiz boşlukları kaldırmak için */
+    color: #ccffcc;
 
 }
 #custom-message{
+    background-color: rgba(0, 0, 0, 0.8) ;
+
     font-family: "Doto", sans-serif;
     font-optical-sizing: auto;
-    font-weight: 400; /* Normal ağırlık */
-    font-size: 30px;
+    font-weight: 900; /* Normal ağırlık */
+    font-size: 20px;
     text-align: center; /* Ortalamak için */
     margin-top: 20px; /* Başlık ile aralık oluşturmak için */
+    color: #ccffcc;
+
 
 }
 .background {
-    background-image: url("{% static 'images/resim.jpg' %}");
+    background-image: url("{% static 'images/resim1.png' %}");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -48,36 +111,56 @@ html, body {
     color: #fff; /* Yazı rengini beyaz yap */
 }
 #welcome-header {
+    background-color: rgba(0, 0, 0, 0.8) ;
+
     font-family: "Doto", sans-serif;
     font-optical-sizing: auto;
-    font-weight: 500;
-    font-size: 100px;
-    text-align: center; /* Ortalamak için */
-    margin: 0; /* Gereksiz boşlukları kaldırmak için */
+    font-weight: 800;
+    font-size: 50px; /* Adjusted to a smaller size */
+    display: flex;
+    justify-content: center; /* Yatayda ortala */
+    align-items: center;
+    margin: 0;
+    color: #ccffcc;
 }
+
 #welcome-message {
+    background-color: rgba(0, 0, 0, 0.8) ;
+
     font-family: "Doto", sans-serif;
     font-optical-sizing: auto;
-    font-weight: 400; /* Normal ağırlık */
-    font-size: 30px;
-    text-align: center; /* Ortalamak için */
-    margin-top: 20px; /* Başlık ile aralık oluşturmak için */
+    font-weight: 800;
+    font-size: 35px; /* Daha küçük bir yazı boyutu */
+    margin: 40px auto; /* Üstteki başlık ile mesafe */
+    color: #ccffcc;
+    text-align: left; /* Soldan sağa hizala */
+    width: 80%; /* Genişlik ayarı */
+    line-height: 1.5; /* Satır aralığını artır */
+    position: relative;
+    top: 30%; /* Mesajın daha aşağı yerleşmesi için */
 }
+
+
 .message-container {
+    background-color: rgba(0, 0, 0, 0.8) ;
     position: absolute;
     top: 10%;
     left: 50%;
     transform: translateX(-50%);
-    width: 80%; /* Gerektiği kadar genişlik ayarlayın */
+    width: 100%; /* Gerektiği kadar genişlik ayarlayın */
     z-index: 10;
 }
 .content {
-    
+    background-color: rgba(0, 0, 0, 0.8) ;
+
+    margin: 0 auto;
     padding: 20px;
     border-radius: 8px;
-    max-width: 600px;
-    text-align: center;
+    max-width: 800px; /* İçeriğin genişliği */
+    text-align: center; /* Tüm içeriği ortala */
+    position: relative;
 }
+
 
 .transparent-box {
     
@@ -87,25 +170,1455 @@ html, body {
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); /* Hafif bir gölge efekti */
 }
 
-.btn {
+
+
+.about-text {
+    background-color: rgba(0, 0, 0, 0.8) ;
+
+    font-family: "Doto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 800;
+    font-size: 30px; /* Adjusted to a smaller size */
+    text-align: center;
+    margin-top: 20px;
+    color: #ccffcc;
+}
+
+/* Genel Liste Stili */
+.vulnerabilities-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Her Bir Zafiyet İçin Stil */
+.vulnerability-item {
+    border: 1px solid #ccffcc; /* Kutu kenarlığı */
+    margin: 15px 0; /* Üst ve alt boşluk */
+    padding: 20px; /* İçerik etrafında boşluk */
+    background-color: rgba(0, 0, 0, 0.6);  /* Saydam siyah arka plan */
+    color: #ccffcc;  /* Yazı rengi */
+    font-size: 16px;  /* Yazı boyutu */
+    border-radius: 10px; /* Yumuşak köşeler */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Hafif gölge efekti */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hover efektleri */
+}
+
+
+.vulnerability-item:hover {
+    transform: scale(1.05); /* Hover ile hafif büyüme efekti */
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2); /* Hover efekti ile daha belirgin gölge */
+}
+
+/* Zafiyet Başlık Stili */
+.vulnerability-header {
+    display: flex;
+    justify-content: space-between; /* Başlık ve risk seviyesi arasında alan bırak */
+    align-items: center;  /* Başlık ve risk seviyesini dikeyde ortala */
+    font-size: 18px;  /* Başlık boyutu */
+    font-weight: 800;  /* Başlık kalın */
+    color: wheat;  /* Başlık rengi */
+    margin-bottom: 10px; /* Başlık ile açıklama arasına boşluk */
+    border-bottom: 2px solid white; /* Başlık altına ince bir çizgi */
+    padding-bottom: 10px; /* Başlık ile alt metin arasına boşluk */
+}
+
+/* Risk Seviyesi Renkleri */
+.risk-level {
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-weight: 800;
+    font-size: 14px;  /* Risk seviyesi metninin boyutu */
+}
+
+.risk-level.high {
+    background-color: #ff5c5c;
+    color: white;
+}
+
+.risk-level.medium {
+    background-color: #ffcc00;
+    color: white;
+}
+
+.risk-level.low {
+    background-color: #5cbb5c;
+    color: white;
+}
+
+/* Açıklama ve Çözüm Kısımlarının Stilini Düzenleme */
+.vulnerability-item p {
+    font-family: "Doto";
+    font-weight: 900;
+    margin-bottom: 15px; /* Paragraflar arasında daha fazla boşluk */
+    line-height: 1.8; /* Satır yüksekliğini artırarak okunabilirliği artır */
+    color: #ccffcc; /* Açıklama metni rengi */
+}
+
+/* Çözüm Metni */
+.vulnerability-item .solution {
+    padding-left: 20px;  /* Çözüm metnine sola boşluk */
+    border-left: 5px solid #5cbb5c;  /* Çözüm kısmına sol kenar çizgisi */
+    font-style: italic; /* Çözüm metnini italik yapmak */
+    margin-top: 15px; /* Çözüm ile üst metin arasına boşluk */
+    color: wheat; /* Çözüm metninin rengi */
+    font-weight: 900;
+}
+
+/* Kaynak Bağlantıları İçin Stil */
+.vulnerability-item a {
+    text-decoration: none;
+  
+    font-weight: bold; /* Link yazısını belirginleştir */
+}
+
+.vulnerability-item a:hover {
+    text-decoration: none;
+}
+
+/* Başlık, Açıklama ve Çözüm Alanları İçin Genel Stil */
+.vulnerability-item h4 {
+    font-size: 20px; /* Başlık boyutunu belirginleştirecek şekilde büyütüyoruz */
+    font-weight: 800;
+    color: wheat;
+    margin-bottom: 10px;
+}
+
+/* Vurgulamak için hover efektleri */
+
+
+/* Bağlantı stili - Navbar bağlantılarını etkilememesi için sadece .vulnerability-item'a özgü yapıldı */
+.vulnerability-item a {
+    color: #007bff;  /* Link renk */
+    text-decoration: none;
+}
+
+.vulnerability-item a:hover {
+    text-decoration: none;  /* Hoverda altı çizili */
+}
+
+/* Navbar Bağlantıları için Stil - Bu kurallar navbar'daki bağlantıları etkilemeyecek */
+.navbar a {
+    color: #000;  /* Navbardaki bağlantı rengi */
+    text-decoration: none; /* Altı çizili olmasın */
+}
+
+/* Form alanlarının dışındaki border için daha koyu ve kalın siyah transparanlık */
+.form-control {
+    border: 3px solid rgba(0, 0, 0, 0.7); /* Siyah, %70 opaklıkta ve daha kalın border */
+    background-color: transparent; /* Arka plan transparan */
+    color: #fff; /* Yazı rengini beyaz yap */
+    padding: 10px; /* İç boşluk, form alanlarının daha rahat görünmesini sağlar */
+    margin-bottom: 20px; /* Form elemanları arasındaki boşluğu kontrol et */
+}
+
+/* Form alanlarında focus olduğunda border renginin daha koyu ve kalın olması */
+.form-control:focus {
+    border-color: rgba(0, 0, 0, 1); /* Tam siyah border */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Hafif bir gölge efekti */
+}
+small.form-text {
+    color: #ff0000 !important;
+    font-weight: 800;
+    
+}
+p {
+    margin: 10px 0; /* Üst ve alt boşluk */
+    line-height: 1.6; /* Satır yüksekliği */
+    color:  #d0e1e0;  /* Genel yazı rengi */
+}
+h1 {
+    margin: 10px 0; /* Üst ve alt boşluk */
+    line-height: 1.6; /* Satır yüksekliği */
+    color:  #d0e1e0; /* Genel yazı rengi */
+    font-size: 20px;
+}
+/* login*/
+.login-page .form-container {
+    
+    background-color: rgba(0, 0, 0, 0.8); /* Arka plan rengini belirler */
+    padding: 40px; /* İçerik ile kenar arasında boşluk sağlar */
+    border-radius: 10px; /* Köşeleri yuvarlar */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5); /* Hafif gölge ekler */
+    color: #ccffcc; /* Yazı rengini beyaz yapar */
+}
+.login-page .form-control:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: #ccffcc;
+    box-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+    color: #ccffcc;
+}
+.login-page .form-control {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid #ccffcc;
+    color: #ccffcc;
+}
+.login-page .btn {
     padding: 10px 20px;
     margin: 10px;
-    background-color: #314527;
-    color: #fff;
+    background-color: rgba(0, 0, 0, 0.8) ;/* Şeffaf siyah arka plan */
+    color: #ccffcc; /* Yeşil yazı rengi */
     cursor: pointer;
     text-decoration: none;
     border-radius: 5px;
+    border: 1px solid #ccffcc; /* Yeşil kenarlık */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Hover efekti */
+}
+
+.login-page .btn:hover {
+    background-color: rgba(0, 0, 0, 0.8); /* Daha koyu siyah arka plan */
+    color: #ccffcc; /* Daha koyu yeşil yazı rengi */
+}
+
+/*register*/
+.register .message-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1050;
+    width: 300px;
+  
+}
+
+.register .custom-alert {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.5s ease;
+}
+
+.register .custom-alert.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.register .alert-icon {
+    margin-right: 15px;
+    font-size: 20px;
+}
+
+.register .alert-content {
+    flex-grow: 1;
+}
+
+.register .close-alert {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: rgba(0,0,0,0.5);
+}
+
+.register .alert-success-custom {
+    background-color: rgba(40, 167, 69, 0.1);
+    border-left: 4px solid #28a745;
+    color: #28a745;
+}
+
+.register .alert-error-custom {
+    background-color: rgba(220, 53, 69, 0.1);
+    border-left: 4px solid #dc3545;
+    color: #dc3545;
+}
+
+.register .alert-warning-custom {
+    background-color: rgba(255, 193, 7, 0.1);
+    border-left: 4px solid #ffc107;
+    color: #ffc107;
+}
+
+.register .alert-info-custom {
+    background-color: rgba(23, 162, 184, 0.1);
+    border-left: 4px solid #17a2b8;
+    color: #17a2b8;
+}
+.register .form-container {
+    
+    background-color: rgba(0, 0, 0, 0.8); /* Arka plan rengini belirler */
+    padding: 40px; /* İçerik ile kenar arasında boşluk sağlar */
+    border-radius: 10px; /* Köşeleri yuvarlar */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5); /* Hafif gölge ekler */
+    color: #ccffcc; /* Yazı rengini beyaz yapar */
+    margin-bottom: 20px;
+
+}
+.register .form-control:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: #ccffcc;
+    box-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+    color: #ccffcc;
+}
+.register .form-control {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid #ccffcc;
+    color: #ccffcc;
+}
+.register .btn {
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: rgba(0, 0, 0, 0.8) ;/* Şeffaf siyah arka plan */
+    color: #ccffcc; /* Yeşil yazı rengi */
+    cursor: pointer;
+    text-decoration: none;
+    border-radius: 5px;
+    border: 1px solid #ccffcc; /* Yeşil kenarlık */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Hover efekti */
+}
+
+.register .btn:hover {
+    background-color: rgba(0, 0, 0, 0.8); /* Daha koyu siyah arka plan */
+    color: #ccffcc; /* Daha koyu yeşil yazı rengi */
+}
+
+/*profile */
+.profile .user-info-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Doto', sans-serif;
+    font-weight: 900;
+    color: #ccffcc;
+}
+
+.profile .user-detail-wrapper {
+    background-color: rgba(0, 0, 0, 0.8) ;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    overflow: hidden;
+}
+
+.profile .user-detail-header {
+    background-color: rgba(0, 0, 0, 0.8) ;
+    padding: 20px;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.profile .user-detail-header h1 {
+    margin: 0;
+    font-size: 24px;
+    color: #ccffcc;
+}
+
+.profile .user-detail-content {
+    padding: 20px;
+}
+
+.profile .user-meta {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #e9ecef;
+    padding-bottom: 15px;
+}
+
+.profile .user-avatar {
+    width: 60px;
+    height: 60px;
+    background-color: black;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-right: 15px;
+}
+
+.profile .user-info h2 {
+    margin: 0;
+    font-size: 18px;
+    color: #ccffcc;
+}
+
+.profile .user-info p {
+    margin: 5px 0;
+    color: wheat;
+    font-size: 14px;
+}
+
+.profile .user-urls h4 {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #ccffcc;
+}
+
+.profile .user-urls ul {
+    margin: 10px 0;
+    padding-left: 20px;
+}
+
+.profile .user-urls ul li {
+    color:  wheat;; /* Siyah renk */
+    font-size: 14px;
+}
+
+.profile .user-urls p {
+    color: #ccffcc;
+    font-size: 14px;
+}
+
+.profile .user-urls span.text-warning {
+    color: #ccffcc; /* Siyah renk */
+    font-weight: bold; /* Daha belirgin hale getirme */
+}
+
+.profile .user-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.profile .btn-edit, .btn-delete {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
     transition: background-color 0.3s ease;
 }
 
-.btn:hover {
-    background-color: #223d13;
+.profile .btn-edit {
+    background-color: #ccffcc;
+    color: white;
 }
-.about-text{
-    font-family: "Doto", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 400; /* Normal ağırlık */
+
+.profile .btn-delete {
+    background-color: #dc3545;
+    color: white;
+}
+
+.profile .btn-edit:hover {
+    background-color: ccffcc;
+}
+
+.profile .btn-delete:hover {
+    background-color: #c82333;
+}
+.profile .btn {
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: rgba(0, 0, 0, 0.8) ;/* Şeffaf siyah arka plan */
+    color: #ccffcc; /* Yeşil yazı rengi */
+    cursor: pointer;
+    text-decoration: none;
+    border-radius: 5px;
+    border: 1px solid #ccffcc; /* Yeşil kenarlık */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Hover efekti */
+}
+
+.profile .btn:hover {
+    background-color: rgba(0, 0, 0, 0.8); /* Daha koyu siyah arka plan */
+    color: #ccffcc; /* Daha koyu yeşil yazı rengi */
+}
+
+/*update*/
+.update-profile .form-container {
+    background-color: rgba(0, 0, 0, 0.8);
+    /* Şeffaf siyah arka plan */
+    padding: 30px;
+    /* İç boşluk */
+    border-radius: 10px;
+    /* Yuvarlatılmış köşeler */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Hafif gölge efekti */
+}
+
+/* Genel Arkaplan ve Konteyner */
+.update-profile .profile-update-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: transparent black;
+}
+
+
+
+/* Form Wrapper */
+.update-profile .profile-update-wrapper {
+    max-width: 500px;
+    background-color: transparent black;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* Başlık */
+.update-profile .profile-update-header h3 {
+    margin-bottom: 10px;
     font-size: 30px;
-    text-align: center; /* Ortalamak için */
-    margin-top: 20px; /* Başlık ile aralık oluşturmak için */
+    color: wheat;
+    /* Başlık yazısı için koyu renk */
+    font-weight: 900;
+}
+
+/* Form Grupları */
+.update-profile .profile-update-form .form-group {
+    margin-bottom: 20px;
+    color: #ccffcc;
+    /* Formdaki yazılar için koyu renk */
+    font-weight: 800;
+}
+
+/* Çizgi Stili */
+.update-profile .profile-update-wrapper hr {
+    margin: 20px 0;
+    border-color: black;
+}
+
+/* Form Aksiyonları */
+.update-profile .form-actions {
+    margin-top: 20px;
+}
+
+.update-profile .form-control:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: #ccffcc;
+    box-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+    color: #ccffcc;
+}
+
+.update-profile .form-control {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid #ccffcc;
+    color: #ccffcc;
+}
+
+.update-profile .btn {
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: rgba(0, 0, 0, 0.8);
+    /* Şeffaf siyah arka plan */
+    color: #ccffcc;
+    /* Yeşil yazı rengi */
+    cursor: pointer;
+    text-decoration: none;
+    border-radius: 5px;
+    border: 1px solid #ccffcc;
+    /* Yeşil kenarlık */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    /* Hover efekti */
+}
+
+.update-profile .btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    /* Daha koyu siyah arka plan */
+    color: #ccffcc;
+    /* Daha koyu yeşil yazı rengi */
+}
+/*change password*/
+.change-password .form-container {
+    background-color: rgba(0, 0, 0, 0.8);
+    /* Şeffaf siyah arka plan */
+    padding: 30px;
+    /* İç boşluk */
+    border-radius: 10px;
+    /* Yuvarlatılmış köşeler */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Hafif gölge efekti */
+}
+
+.change-password .form-group {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100px;
+    font-weight: 900;
+    color: #ccffcc;
+}
+
+.change-password label {
+    margin-bottom: 10px;
+}
+
+.change-password .form-control {
+    height: 40px;
+}
+
+.change-password .form-control:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: #ccffcc;
+    box-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+    color: #ccffcc;
+}
+
+.change-password .form-control {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid #ccffcc;
+    color: #ccffcc;
+}
+
+.change-password .btn {
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: rgba(0, 0, 0, 0.8);
+    /* Şeffaf siyah arka plan */
+    color: #ccffcc;
+    /* Yeşil yazı rengi */
+    cursor: pointer;
+    text-decoration: none;
+    border-radius: 5px;
+    border: 1px solid #ccffcc;
+    /* Yeşil kenarlık */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    /* Hover efekti */
+}
+
+.change-password .btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    /* Daha koyu siyah arka plan */
+    color: #ccffcc;
+}
+
+.change-password .secret-text-center {
+    text-align: left;
+    /* Align the button to the left */
+    margin-top: 1px;
+    /* Adjust the top margin */
+    margin-bottom: 10px;
+    /* Adjust the bottom margin */
+}
+
+.change-password .secret-text-center button {
+    padding: 5px 10px;
+    /* Smaller padding */
+    font-size: 14px;
+    /* Smaller font size */
+    color: #ccffcc;
+    /* Green text color */
+    background-color: rgba(0, 0, 0, 0.8);
+    /* Transparent black background */
+    border: 1px solid #ccffcc;
+    /* Green border */
+    border-radius: 5px;
+    /* Rounded corners */
+    cursor: pointer;
+    /* Pointer cursor on hover */
+    text-decoration: none;
+    /* Remove underline */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    /* Smooth transition */
+    margin-bottom: 30;
+}
+
+.change-password .secret-text-center button:hover {
+    background-color: rgba(0, 0, 0, 0.9);
+    /* Darker black on hover */
+    color: #ccffcc;
+    /* Green text on hover */
+}
+/*scanner result*/
+.result .btn {
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: rgba(0, 0, 0, 0.8);
+    /* Şeffaf siyah arka plan */
+    color: #ccffcc;
+    /* Yeşil yazı rengi */
+    cursor: pointer;
+    text-decoration: none;
+    border-radius: 5px;
+    border: 1px solid #ccffcc;
+    /* Yeşil kenarlık */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    /* Hover efekti */
+}
+
+.result .btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    /* Daha koyu siyah arka plan */
+    color: #ccffcc;
+}
+
+/*scanner*/
+.scanner .form-container {
+    background-color: rgba(0, 0, 0, 0.8); /* Arka plan rengini belirler */
+    padding: 40px; /* İçerik ile kenar arasında boşluk sağlar */
+    border-radius: 10px; /* Köşeleri yuvarlar */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5); /* Hafif gölge ekler */
+    color: #ccffcc; /* Yazı rengini beyaz yapar */
+}
+
+.scanner .result-link {
+    display: flex; /* Flexbox kullanarak hizalama */
+    justify-content: flex-start; /* Butonu sola hizalar */
+    margin-top: 5px; /* Buton ile üstündeki öğe arasında boşluk bırakır */
+}
+
+.scanner .result-link a {
+    text-align: left,; /* Butonu sola hizalar */
+}
+.scanner .approved-sites-header {
+    color: #ccffcc; /* Burada istediğiniz renk kodunu kullanabilirsiniz */
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+.scanner .approval-status {
+    color: yellow; /* Örnek: yeşil renk (onay durumu için) */
+}
+.scanner .form-control:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: #ccffcc;
+    box-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+    color: #ccffcc;
+}
+.scanner .form-control {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid #ccffcc;
+    color: #ccffcc;
+}
+.scanner .btn {
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: rgba(0, 0, 0, 0.8);
+    /* Şeffaf siyah arka plan */
+    color: #ccffcc;
+    /* Yeşil yazı rengi */
+    cursor: pointer;
+    text-decoration: none;
+    border-radius: 5px;
+    border: 1px solid #ccffcc;
+    /* Yeşil kenarlık */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    /* Hover efekti */
+}
+
+.scanner .btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    /* Daha koyu siyah arka plan */
+    color: #ccffcc;
+}
+/*send message*/
+.send-message .message-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Doto', sans-serif;
+}
+
+.send-message .message-compose-wrapper {
+    background-color: rgba(0, 0, 0, 0.8) ;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    overflow: hidden;
+}
+
+.send-message .message-compose-header {
+    background-color: rgba(0, 0, 0, 0.8) ;
+    padding: 20px;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.send-message .back-button {
+    display: block;
+    color: #fffb00;
+    text-decoration: none;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.send-message .message-compose-header h1 {
+    margin: 0;
+    font-size: 24px;
+    color: #ccffcc;
+}
+
+.send-message .message-compose-form {
+    padding: 20px;
+}
+
+.send-message .form-group {
+    margin-bottom: 20px;
+}
+
+.send-message .form-label {
+    display: block;
+    margin-bottom: 8px;
+    color: #ccffcc;
+    font-weight: 600;
+}
+
+.send-message .form-input-wrapper {
+    position: relative;
+}
+
+.send-message .form-input-wrapper input, 
+.send-message .form-input-wrapper textarea {
+    width: 100%;
+    padding: 12px 15px 12px 40px;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+.send-message .form-input-wrapper input:focus, 
+.send-message .form-input-wrapper textarea:focus {
+    outline: none;
+    border-color: #ccffcc;
+    box-shadow: 0 0 0 3px rgba(0,123,255,0.1);
+}
+
+.send-message .form-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6c757d;
+}
+
+/* CKEditor için özel stil */
+.send-message .ck-editor__editable {
+    min-height: 250px;
+    border-radius: 8px;
+}
+
+.send-message .form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.send-message .btn-send {
+    background-color: rgba(0, 0, 0, 0.8) ;
+    color: #ccffcc;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+
+
+.send-message .btn-cancel {
+    color: #fb0000;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 12px 24px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.send-message .btn-cancel:hover {
+    background-color: rgba(0, 0, 0, 0.8) ;
+}
+
+/*messages*/
+
+.messages .message-container {
+    
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Doto', sans-serif;
+    font-weight: 800;
+}
+
+.messages .inbox-wrapper {
+    background-color: rgba(0, 0, 0, 0.8) ;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    overflow: hidden;
+}
+
+.messages .inbox-header {
+    background-color: rgba(0, 0, 0, 0.8) ;
+    padding: 20px;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.messages .inbox-header h1 {
+    margin: 0;
+    font-size: 24px;
+    color: #ccffcc;
+}
+
+.messages .tabs {
+    display: flex;
+    margin-top: 15px;
+    color: #ccffcc;
+}
+
+.messages .tab {
+    padding: 10px 20px;
+    border: none;
+    background-color: transparent;
+    color: #ccffcc;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+
+.messages .message-list {
+    display: none;
+}
+
+.messages .message-list.active {
+    display: block;
+}
+
+.messages .message-item {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #e9ecef;
+    transition: background-color 0.3s ease;
+}
+
+
+
+.messages .message-avatar {
+    width: 50px;
+    height: 50px;
+    background-color: black;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-right: 15px;
+}
+
+.messages .message-details {
+    flex-grow: 1;
+}
+
+.messages .message-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.messages .message-header h3 {
+    margin: 0;
+    font-size: 16px;
+    color: #ccffcc;
+}
+
+.messages .message-date {
+    color: #a9aba9;
+    font-size: 12px;
+}
+
+.messages .message-preview p {
+    margin: 0;
+    color: #ccffcc;
+    font-size: 14px;
+}
+
+.messages .message-actions {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.messages .btn-view {
+    text-decoration: none;
+    background-color: black;
+    color: #ccffcc;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    margin-right: 10px;
+}
+
+.messages .badge-new {
+    background-color: #28a745;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 16px;
+    font-size: 10px;
+}
+
+.messages .badge-pending {
+    background-color: #ffc107;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 16px;
+    font-size: 10px;
+}
+
+.messages .empty-state {
+    text-align: center;
+    padding: 50px;
+    color: #6c757d;
+}
+
+.messages .empty-state img {
+    max-width: 200px;
+    margin-bottom: 20px;
+}
+
+
+/* message-detail */
+.message-detail .message-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Doto', sans-serif;
+}
+
+.message-detail .message-detail-wrapper {
+    background-color: rgba(0, 0, 0, 0.8) ;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    overflow: hidden;
+}
+
+.message-detail .message-detail-header {
+    background-color: rgba(0, 0, 0, 0.8) ;
+    padding: 20px;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.message-detail .back-button {
+    display: block;
+    color: #ccffcc;
+    text-decoration: none;
+    margin-bottom: 10px;
+    font-weight: 600;
+    
+}
+
+.message-detail .message-detail-header h1 {
+    margin: 0;
+    font-size: 24px;
+    color: #ccffcc;
+}
+
+.message-detail .message-detail-content {
+    padding: 20px;
+}
+
+.message-detail .message-meta {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #e9ecef;
+    padding-bottom: 15px;
+}
+
+.message-detail .message-sender-avatar {
+    width: 60px;
+    height: 60px;
+    background-color: black;
+    color: #ccffcc;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-right: 15px;
+}
+
+.message-detail .message-sender-info h2 {
+    margin: 0;
+    font-size: 18px;
+    color: #ccffcc;
+}
+
+.message-detail .message-sender-info p {
+    margin: 5px 0 0;
+    color: #ccffcc;
+    font-size: 14px;
+}
+
+.message-detail .message-status {
+    margin-left: auto;
+}
+
+.message-detail .status-badge {
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.message-detail .status-badge.read {
+    background-color: #28a745;
+    color: white;
+}
+
+.message-detail .status-badge.unread {
+    background-color: #ffc107;
+    color: white;
+}
+
+.message-detail .message-body {
+    margin-bottom: 20px;
+}
+
+.message-detail .message-content {
+    background-color: rgba(255, 255, 255, 0.8); /* Arka plan rengini koyu yap */
+    padding: 15px;
+    border-radius: 8px;
+    line-height: 1.6;
+    color: #ccffcc; /* Yazı rengini açık yeşil yap */
+}
+
+
+.message-detail .message-attachments {
+    margin-bottom: 20px;
+}
+
+.message-detail .message-attachments h3 {
+    margin-bottom: 10px;
+    color: #ccffcc;
+}
+
+.message-detail .attachment-item {
+    display: flex;
+    align-items: center;
+    background-color: #f1f3f5;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+.message-detail .attachment-icon {
+    margin-right: 10px;
+}
+
+.message-detail .attachment-item a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.message-detail .message-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.message-detail .btn-reply, .btn-delete {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.message-detail .btn-reply {
+    background-color: black;
+    color: #ccffcc;
+}
+
+.message-detail .btn-delete {
+    background-color: black;
+    color: #ff0000;
+}
+
+.message-detail .btn-reply:hover {
+    background-color: black;
+}
+
+.message-detail .btn-delete:hover {
+    background-color: #c82333;
+}
+
+.message-detail .btn {
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: rgba(0, 0, 0, 0.8);
+    /* Şeffaf siyah arka plan */
+    color: #ccffcc;
+    /* Yeşil yazı rengi */
+    cursor: pointer;
+    text-decoration: none;
+    border-radius: 5px;
+    border: 1px solid #ccffcc;
+    /* Yeşil kenarlık */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    /* Hover efekti */
+}
+.message-detail .btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    /* Daha koyu siyah arka plan */
+    color: #ccffcc;
+}
+
+
+/*password_reset_request*/
+
+.password_reset_request .form-container {
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: #ccffcc;
+}
+
+.password_reset_request .form-group label {
+    color: #ccffcc;
+}
+
+.password_reset_request .form-control {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid #ccffcc;
+    color: #ccffcc;
+}
+
+.password_reset_request .form-control::placeholder {
+    color: #ccffcc;
+    opacity: 0.7;
+}
+
+.password_reset_request .form-control:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: #00ff00;
+    box-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+    color: #ccffcc;
+}
+
+.password_reset_request .btn {
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: rgba(0, 0, 0, 0.8);
+    /* Şeffaf siyah arka plan */
+    color: #ccffcc;
+    /* Yeşil yazı rengi */
+    cursor: pointer;
+    text-decoration: none;
+    border-radius: 5px;
+    border: 1px solid #ccffcc;
+    /* Yeşil kenarlık */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    /* Hover efekti */
+}
+
+.password_reset_request .btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    /* Daha koyu siyah arka plan */
+    color: #ccffcc;
+}
+
+/* .password_reset_confirm */
+.password_reset_confirm .form-container {
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: #ccffcc;
+   
+}
+
+.password_reset_confirm .form-group label {
+    color: #ccffcc;
+}
+
+.password_reset_confirm .form-control {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid #ccffcc; /* Kenarlık rengi düzenlendi */
+    color: #ccffcc;
+}
+
+.password_reset_confirm .form-control::placeholder {
+    color: #ccffcc; /* Placeholder rengi düzenlendi */
+    opacity: 0.7;
+}
+
+.password_reset_confirm .form-control:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: #00ff00;
+    box-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+    color: #ccffcc;
+}
+
+.password_reset_confirm .btn {
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: rgba(0, 0, 0, 0.8);
+    /* Şeffaf siyah arka plan */
+    color: #ccffcc;
+    /* Yeşil yazı rengi */
+    cursor: pointer;
+    text-decoration: none;
+    border-radius: 5px;
+    border: 1px solid #ccffcc;
+    /* Yeşil kenarlık */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    /* Hover efekti */
+}
+
+.password_reset_confirm .btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    /* Daha koyu siyah arka plan */
+    color: #ccffcc;
+}
+
+/*privacpolicy*/
+.privacy-policy .section-title {
+    color: #ccffcc; /* Consistent with the register page */
+    font-size: 1.5rem;
+    margin-top: 100px;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #2c3e50; /* Darker line for contrast */
+}
+
+.privacy-policy .card {
+    border: none;
+    border-radius: 10px; /* Same rounded corners as register page */
+    background-color: rgba(0, 0, 0, 0.8); /* Dark background similar to register page */
+    color: #ccffcc; /* Matching text color */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5); /* Shadow effect for depth */
+}
+
+.privacy-policy .card-header {
+    margin-top: 3700px;
+    border-radius: 10px 10px 0 0;
+    background-color: rgba(0, 0, 0, 0.8); /* Dark header for consistency */
+    color: #ccffcc; /* White text for header */
+}
+
+.privacy-policy .card-body {
+    padding: 1.5rem;
+    background-color: rgba(0, 0, 0, 0.8); /* Dark background for card body */
+}
+
+.privacy-policy .alert {
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+}
+
+.privacy-policy .alert-info {
+    background-color: rgba(23, 162, 184, 0.1);
+    border-left: 4px solid #17a2b8;
+    color: #17a2b8;
+}
+
+.privacy-policy .alert-warning {
+    background-color: rgba(255, 193, 7, 0.1);
+    border-left: 4px solid #ffc107;
+    color: #ffc107;
+}
+
+.privacy-policy .alert-success {
+    background-color: rgba(40, 167, 69, 0.1);
+    border-left: 4px solid #28a745;
+    color: #28a745;
+}
+
+.privacy-policy .alert-danger {
+    background-color: rgba(220, 53, 69, 0.1);
+    border-left: 4px solid #dc3545;
+    color: #dc3545;
+}
+
+/* Policy Sections */
+.policy-sections section {
+    padding: 1.5rem;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    margin-bottom: 1.5rem;
+}
+
+.policy-sections section:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+/* Icon styling */
+.privacy-policy ul li i {
+    margin-right: 15px;
+    font-size: 18px;
+}
+
+/* List item styling */
+.privacy-policy ul li {
+    margin-bottom: 0.8rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+/* Button Styling - matching Register page */
+.privacy-policy .btn {
+    padding: 10px 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #ccffcc;
+    border-radius: 5px;
+    border: 1px solid #ccffcc;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    cursor: pointer;
+}
+
+.privacy-policy .btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #ccffcc;
+}
+
+/* Custom Alert (Similar to Register page alerts) */
+.custom-alert {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.5s ease;
+}
+
+.custom-alert.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.custom-alert .alert-icon {
+    margin-right: 15px;
+    font-size: 20px;
+}
+
+.custom-alert .alert-content {
+    flex-grow: 1;
+}
+
+.custom-alert .close-alert {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: rgba(0,0,0,0.5);
+}
+
+.custom-alert.alert-success-custom {
+    background-color: rgba(40, 167, 69, 0.1);
+    border-left: 4px solid #28a745;
+    color: #28a745;
+}
+
+.custom-alert.alert-error-custom {
+    background-color: rgba(220, 53, 69, 0.1);
+    border-left: 4px solid #dc3545;
+    color: #dc3545;
+}
+
+.custom-alert.alert-warning-custom {
+    background-color: rgba(255, 193, 7, 0.1);
+    border-left: 4px solid #ffc107;
+    color: #ffc107;
+}
+
+.custom-alert.alert-info-custom {
+    background-color: rgba(23, 162, 184, 0.1);
+    border-left: 4px solid #17a2b8;
+    color: #17a2b8;
 }

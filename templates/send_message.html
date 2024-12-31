@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+{% load crispy_forms_tags %}
+<div class="send-message">
+    <div class="message-container ">
+        <div class="message-compose-wrapper">
+            <div class="message-compose-header">
+                <a href="{% url 'messaging:messages' %}" class="back-button">← Mesaj Kutusuna Dön</a>
+                <h1>Yeni Mesaj Oluştur</h1>
+            </div>
+
+            <form method="post" enctype="multipart/form-data" class="message-compose-form">
+                {% csrf_token %}
+                {{ form.media }}  
+
+                <div class="form-group">
+                    <label for="{{ form.subject.id_for_label }}" class="form-label">Konu</label>
+                    <div class="form-input-wrapper">
+                        {{ form.subject }}
+                        <div class="form-icon">✉️</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="{{ form.content.id_for_label }}" class="form-label">Mesaj İçeriği</label>
+                    <div class="form-input-wrapper">
+                        {{ form.content }}
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn-send">Mesajı Gönder</button>
+                    <a href="{% url 'messaging:messages' %}" class="btn-cancel">İptal</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

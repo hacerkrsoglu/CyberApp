@@ -1,25 +1,43 @@
 {% extends "layout.html" %}
 {% block body %}
 {% load crispy_forms_tags %}
-<div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+
+<div class="container d-flex justify-content-center align-items-center scanner" style="min-height: 100vh; margin-top: 50px;">
     <div class="row w-100">
         <div class="col-md-6 offset-md-3">
-            <h3>URL Tarama</h3>
-            <hr>
-            <form method="post">
-                {% csrf_token %}
-                {{ form|crispy }}
+            <div class="form-container">
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <button type="submit" class="btn btn-black">URL Ekle</button>
+                </form>
                 <br>
-                <button type="submit" class="btn btn-black">Tarama Başlat</button>
-            </form>
-            {% if messages %}
-                <div class="alert alert-info mt-3">
-                    {% for message in messages %}
-                        <p>{{ message }}</p>
+
+                <h3 class="approved-sites-header">Onaylanmış URL'ler</h3>
+                <ul>
+                    {% if approved_sites.exists %}
+                    {% for site in approved_sites %}
+                    <li>
+                        {{ site.url }} - <span class="approval-status">{{ site.approval_status }}</span>
+                        <form method="post" action="{% url 'scanner:start_scan' site.id %}" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-black">Tarama Başlat</button>
+                            <div class="result-link">
+                                <a href="{% url 'scanner:scan_results' approved_sites.last.id %}" class="btn btn-black">Sonuçlarım</a>
+                            </div>
+                        </form>
+                    </li>
                     {% endfor %}
-                </div>
-            {% endif %}
+                    {% else %}
+                    <p>Henüz onaylanmış URL'niz yok.</p>
+                    {% endif %}
+                </ul>
+            </div>
         </div>
     </div>
 </div>
-{% endblock body %}
+
+
+
+
+{% endblock %}

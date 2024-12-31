@@ -1,11 +1,31 @@
-{% extends "layout.html" %}
+{% extends 'base.html' %}
+
 {% block content %}
-  <h2>Onay Bekleyen Siteler</h2>
-  <ul>
-    {% for site in sites %}
-      <li>{{ site.url }} - 
-        <a href="{% url 'approve_url' site.id %}">Onayla</a>
-      </li>
-    {% endfor %}
-  </ul>
+<h2>Admin Paneli - Onay Bekleyen URL'ler</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Kullanıcı</th>
+            <th>URL</th>
+            <th>Oluşturulma Tarihi</th>
+            <th>Onayla</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for site in sites %}
+            <tr>
+                <td>{{ site.user.username }}</td>
+                <td>{{ site.url }}</td>
+                <td>{{ site.created_at }}</td>
+                <td>
+                    <a href="{% url 'scanner:approve_url' site.id %}">Onayla</a>
+                </td>
+            </tr>
+        {% empty %}
+            <tr>
+                <td colspan="4">Onay bekleyen URL yok.</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
 {% endblock %}

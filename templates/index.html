@@ -15,13 +15,13 @@
 <script>
     function typeWriter(element, text, delay) {
         let index = 0;
-        element.style.opacity = '1'; // Yazı görünür hale getirilir
+        element.style.opacity = '1'; // Yazı görünür hale getirmek için
 
         function type() {
             if (index < text.length) {
                 element.textContent += text.charAt(index);
                 index++;
-                setTimeout(type, delay); // Her harften sonra belirli bir zaman aralığı ile çağır
+                setTimeout(type, delay); // Her harften sonra belirli bir zaman aralığı ile çağırıyo
             }
         }
 
@@ -30,19 +30,19 @@
     const messages = document.querySelector('.message-container');
         if (messages) {
             setTimeout(() => {
-                messages.style.opacity = '0'; // Mesaj kutusunu kaybolmaya başlat
+                messages.style.opacity = '0'; // Mesaj kutusunu kaybolmaya başlatır
                 setTimeout(() => {
                     messages.remove(); // Kaybolduktan sonra tamamen kaldır
-                }, 300); // 0.3 saniye sonra kutuyu kaldır
-            }, 1000); // 1 saniye sonra kaybolmasını başlat
+                }, 300); // 0.3 saniye sonra kutuyu kaldırıyo
+            }, 1000); 
         }
 
-    // Sayfa yüklendiğinde yazıları ekle
+    // Sayfa yüklendiğinde yazıları eklemek için
     window.onload = function () {
-        typeWriter(document.getElementById('welcome-header'), 'Hoş Geldiniz!', 100); // 100 ms aralıkla yaz
+        typeWriter(document.getElementById('welcome-header'), 'Hoş Geldiniz!', 100); 
         setTimeout(() => {
-            typeWriter(document.getElementById('welcome-message'), 'Tarama yapabilmek için kayıt olmanız veya giriş yapmanız gerekmektedir.', 30); // 100 ms aralıkla yaz
-        }, 300); // 1 saniye bekle
+            typeWriter(document.getElementById('welcome-message'), 'Tarama yapabilmek için kayıt olmanız veya giriş yapmanız gerekmektedir.', 30); // 100 ms aralıkla yazar
+        }, 300); // 1 saniye bekler
     };
 </script>
 {% endblock %}

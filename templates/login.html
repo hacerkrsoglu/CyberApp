@@ -1,18 +1,42 @@
 {% extends "layout.html" %}
 {% block body %}
 {% load crispy_forms_tags %}
-<div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+<div class="container d-flex justify-content-center align-items-center login-page" style="min-height: 100vh;">
     <div class="row w-100">
         <div class="col-md-6 offset-md-3">
-            <h3>Giriş Yap</h3>
             <hr>
-            <form method="post">
-                {% csrf_token %}
-                {{ form|crispy }}
-                <br>
-                <button type="submit" class="btn btn-black">Giriş Yap</button>
-            </form>
+            <div class="form-container">
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <div class="secret-text-center">
+                        <button type="button" class="btn btn-link" id="toggle-password">
+                            Şifreyi Göster
+                        </button>
+                    </div>
+                    <br>
+                    <a href="{% url 'user:password_reset_request' %}" class="text-light" style="font-size: 0.9rem;">Şifremi Unuttum</a>
+                    <br><br>
+                    <button type="submit" class="btn btn-black">Giriş Yap</button>
+                </form>
+            </div>
         </div>
     </div>
 </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#toggle-password").click(function () {
+            const passwordField = $("input[name='password']");
+            const currentType = passwordField.attr("type");
+            
+            if (currentType === "password") {
+                passwordField.attr("type", "text");
+            } else {
+                passwordField.attr("type", "password");
+            }
+        });
+    });
+</script>
 {% endblock body %}

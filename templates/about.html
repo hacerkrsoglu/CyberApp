@@ -4,37 +4,37 @@
 
 
 <p class="about-text" id="p">
-    <!-- JavaScript ile doldurulacak -->
+    
 </p>
 
 <script>
     // Typewriter animasyon fonksiyonu
     function typeWriter(element, text, delay) {
         let index = 0;
-        element.textContent = '';  // İlk önce metni temizle
+        element.textContent = '';  // İlk önce metni temizler burda
         element.style.opacity = '1';
 
         function type() {
             if (index < text.length) {
                 element.textContent += text.charAt(index);
                 index++;
-                setTimeout(type, delay);  // Belirtilen süre ile bir karakter ekle
+                setTimeout(type, delay);  // Belirtilen süre ile bir karakter ekliyo
             }
         }
 
         type();
     }
 
-    // Sayfa yüklendikten sonra animasyonu başlat
+    // Sayfa yüklendikten sonra animasyonu başlatır
     window.onload = function () {
-        // Typewriter animasyonunu başlat
+        // Typewriter animasyonunu başlatır
         setTimeout(() => {
             typeWriter(
                 document.getElementById('p'),
                 'Herkese merhaba. Ben Hacer Kırışoğlu. Samsun Üniversitesi Yazılım Mühendisliği 4.sınıf öğrencisiyim. Bu sitede izinli olduğunuz veya kendi siteniz üzerinde tarama yapabilir, bu şekilde açıklar varsa bu kısımları kapatabilirsiniz. Admin ile iletişime geçtikten sonraki geri dönüş ile birlikte tarama yapmak istediğiniz siteye tarama erişiminiz açılacaktır. İzinli olduğu veya kendi sitesi olduğunun kesinliğini sunamayan kullanıcılara herhangi tarama izni verilmemektedir. Güvenli kalıp güvenle kalmanız dileğiyle.',
-                30  // Her karakterin yazılma süresi
+                30  // Her karakterin yazılma süresini burda belirttik
             );
-        }, 300);  // Sayfa yüklendikten 300 ms sonra animasyonu başlat
+        }, 300);  // Sayfa yüklendikten 300 ms sonra animasyonu başlatıyo
     };
 </script>
 

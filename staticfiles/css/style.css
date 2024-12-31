@@ -1,4 +1,3 @@
-/* Tüm ekranı kapsayan bir arka plan ayarı */
 html, body {
     margin: 0;
     padding: 0;
@@ -7,7 +6,103 @@ html, body {
     font-family: 'Montserrat', Arial, sans-serif;
     overflow-x: hidden;
 }
+/* Tam Ekran için Dropdown Menüsünün Genişliğini Ayarlama */
+/* Tam Ekran için Dropdown Menüsünün Genişliğini Ayarlama */
+.dropdown-menu {
+    width: 100%;  /* Menüyü tamamen ekran genişliğine yay */
+    background-color: #f8f9fa;  /* Arka plan rengini belirleyelim (açık gri) */
+    border-radius: 0.375rem;  /* Kenarlara yuvarlaklık ekleyelim */
+    border: 1px solid rgba(0, 0, 0, 0.125);  /* Kenarlık rengi ve opaklık */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);  /* Gölgelendirme efekti ekleyelim */
+    padding: 10px 0;  /* İçerik için padding ekleyelim */
+    white-space: nowrap;  /* Metni tek satıra sığdır */
+    overflow: hidden;  /* Taşan metinleri gizle */
+    text-overflow: ellipsis; /* Taşan metinlerin görünmesini sağla */
+}
 
+/* Küçük Ekranlar için Dropdown Menüsünü Daraltma */
+@media (max-width: 768px) {
+    .dropdown-menu {
+        width: 90%;  /* Ekranın %90'ı kadar genişlik */
+        max-width: 300px;  /* Ekran daraldığında menüyü biraz daralt */
+        word-wrap: break-word;  /* Metni satırlara böl */
+        padding: 10px;  /* İçeriğin daha düzgün görünmesini sağla */
+    }
+}
+
+/* Menü Elemanlarını daha rahat görünür hale getirmek için */
+.dropdown-item {
+    white-space: normal;  /* Metni tek satıra sığdırma */
+    word-wrap: break-word;  /* Metin uzun olursa alt satıra geçsin */
+    padding: 8px 16px;  /* Menü öğeleri arasında uygun boşluk bırak */
+    transition: background-color 0.3s, color 0.3s;  /* Hover efektine geçiş animasyonu ekleyelim */
+}
+
+/* Menü Öğeleri üzerine gelindiğinde renk değiştirme */
+.dropdown-item:hover {
+    background-color: #161716;  /* Hover durumunda arka plan rengini değiştir */
+    color: white;  /* Yazı rengini beyaz yapalım */
+}
+
+/* Menüdeki öğelerin arasındaki boşluğu artırma */
+.dropdown-menu .dropdown-item + .dropdown-item {
+    margin-top: 5px;  /* Menü öğeleri arasındaki boşluğu arttır */
+}
+
+/* Menüdeki öğeler arasındaki divider için stil */
+.dropdown-divider {
+    border-color: #ddd;  /* Divider'ı daha belirgin yapmak için rengini değiştirelim */
+}
+
+/* Dropdown Menü Elemanlarını rahatça görünür yapmak */
+.dropdown-item {
+    font-size: 1rem;  /* Yazı boyutunu belirleyelim */
+    font-family: 'Montserrat', sans-serif;  /* Yazı tipi ekleyelim */
+}
+
+/* Focus olunduğunda menü öğesinin stilini değiştirme */
+.dropdown-item:focus {
+    background-color:#161716;  /* Fokus durumunda farklı bir renk */
+    color: white;  /* Yazıyı beyaz yapalım */
+}
+
+h2, h3 {
+    margin-top: 200px;  /* Üstten 20px boşluk */
+    margin-bottom: 5px;  /* Alt boşluğu azalt */
+}
+/* Tarama sonuçları sayfasına özel H2 ve H3 stilleri */
+
+
+#text-container {
+    display: flex;
+    flex-direction: column; /* Dikey hizalama */
+    align-items: center;    /* Yatayda ortalama */
+    justify-content: center; /* Dikeyde ortalama */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Merkezi pozisyonlama */
+    text-align: center; /* İçeriklerin merkezde hizalanması */
+    width: 100%; /* Gerektiği kadar genişlik ayarlayın */
+}
+#custom-header{
+    font-family: "Doto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-size: 100px;
+    text-align: center; /* Ortalamak için */
+    margin: 0; /* Gereksiz boşlukları kaldırmak için */
+
+}
+#custom-message{
+    font-family: "Doto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400; /* Normal ağırlık */
+    font-size: 30px;
+    text-align: center; /* Ortalamak için */
+    margin-top: 20px; /* Başlık ile aralık oluşturmak için */
+
+}
 .background {
     background-image: url("{% static 'images/resim.jpg' %}");
     background-size: cover;
@@ -21,68 +116,27 @@ html, body {
 }
 #welcome-header {
     font-family: "Doto", sans-serif;
-    font-weight: 500; /* 500 uygun bir font-weight değeri */
-    font-style: normal; /* veya italic, eğer gerekli ise */
+    font-optical-sizing: auto;
+    font-weight: 500;
     font-size: 100px;
+    text-align: center; /* Ortalamak için */
+    margin: 0; /* Gereksiz boşlukları kaldırmak için */
 }
-
 #welcome-message {
     font-family: "Doto", sans-serif;
-    font-weight: 500; /* Aynı şekilde font-weight */
-    font-style: normal; /* veya italic */
+    font-optical-sizing: auto;
+    font-weight: 400; /* Normal ağırlık */
     font-size: 30px;
+    text-align: center; /* Ortalamak için */
+    margin-top: 20px; /* Başlık ile aralık oluşturmak için */
 }
-
 .message-container {
-    position: fixed;
-    top: 10%;  /* Yükseklik ayarı */
+    position: absolute;
+    top: 10%;
     left: 50%;
     transform: translateX(-50%);
-    width: 80%; /* Mesaj kutularının genişliği */
-    z-index: 9999; /* Diğer öğelerin üstünde olması için */
-}
-.message-container .alert {
-    display: block; /* Başlangıçta görünür yapıyoruz */
-    animation: slide-in 0.8s ease-out; /* 0.8 saniyede kayarak gelsin */
-    padding: 20px;
-    border-radius: 8px;
-    max-width: 600px;
-    margin-bottom: 15px;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Hafif gölge */
-}
-/* Mesaj kutusunun kayarak ekrana gelmesi için animasyon */
-@keyframes slide-in {
-    from {
-        transform: translateY(-50px); /* Yukarıdan kayarak başla */
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0); /* Ekranın normal yerine gelsin */
-        opacity: 1;
-    }
-}
-
-/* Farklı türdeki mesaj kutuları için renkler */
-.alert-success {
-    background-color: #4caf50;  /* Yeşil: Başarı */
-    color: white;
-}
-
-.alert-info {
-    background-color: #2196f3;  /* Mavi: Bilgi */
-    color: white;
-}
-
-.alert-danger {
-    background-color: #f44336;  /* Kırmızı: Hata */
-    color: white;
-}
-
-/* Mesaj kutularının kaybolma animasyonu */
-.fade-out {
-    opacity: 0;
-    transition: opacity 0.5s ease-out;
+    width: 80%; /* Gerektiği kadar genişlik ayarlayın */
+    z-index: 10;
 }
 .content {
     
@@ -113,4 +167,141 @@ html, body {
 
 .btn:hover {
     background-color: #223d13;
+}
+.about-text{
+    font-family: "Doto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400; /* Normal ağırlık */
+    font-size: 30px;
+    text-align: center; /* Ortalamak için */
+    margin-top: 20px; /* Başlık ile aralık oluşturmak için */
+}
+/* Genel Liste Stili */
+.vulnerabilities-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Her Bir Zafiyet İçin Stil */
+.vulnerability-item {
+    border: 1px solid #ddd; /* Kutu kenarlığı */
+    margin: 15px 0; /* Üst ve alt boşluk */
+    padding: 20px; /* İçerik etrafında boşluk */
+    background-color: #ffffff;  /* Beyaz arka plan */
+    color: #333;  /* Yazı rengi */
+    font-size: 16px;  /* Yazı boyutu */
+    border-radius: 10px; /* Yumuşak köşeler */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Hafif gölge efekti */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hover efektleri */
+}
+
+.vulnerability-item:hover {
+    transform: scale(1.05); /* Hover ile hafif büyüme efekti */
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2); /* Hover efekti ile daha belirgin gölge */
+}
+
+/* Zafiyet Başlık Stili */
+.vulnerability-header {
+    display: flex;
+    justify-content: space-between; /* Başlık ve risk seviyesi arasında alan bırak */
+    align-items: center;  /* Başlık ve risk seviyesini dikeyde ortala */
+    font-size: 18px;  /* Başlık boyutu */
+    font-weight: bold;  /* Başlık kalın */
+    color: #222;  /* Başlık rengi */
+    margin-bottom: 10px; /* Başlık ile açıklama arasına boşluk */
+    border-bottom: 2px solid #f1f1f1; /* Başlık altına ince bir çizgi */
+    padding-bottom: 10px; /* Başlık ile alt metin arasına boşluk */
+}
+
+/* Risk Seviyesi Renkleri */
+.risk-level {
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 14px;  /* Risk seviyesi metninin boyutu */
+}
+
+.risk-level.high {
+    background-color: #ff5c5c;
+    color: white;
+}
+
+.risk-level.medium {
+    background-color: #ffcc00;
+    color: white;
+}
+
+.risk-level.low {
+    background-color: #5cbb5c;
+    color: white;
+}
+
+/* Açıklama ve Çözüm Kısımlarının Stilini Düzenleme */
+.vulnerability-item p {
+    margin-bottom: 15px; /* Paragraflar arasında daha fazla boşluk */
+    line-height: 1.8; /* Satır yüksekliğini artırarak okunabilirliği artır */
+    color: #555; /* Açıklama metni rengi */
+}
+
+/* Çözüm Metni */
+.vulnerability-item .solution {
+    padding-left: 20px;  /* Çözüm metnine sola boşluk */
+    border-left: 5px solid #5cbb5c;  /* Çözüm kısmına sol kenar çizgisi */
+    font-style: italic; /* Çözüm metnini italik yapmak */
+    margin-top: 15px; /* Çözüm ile üst metin arasına boşluk */
+    color: #444; /* Çözüm metninin rengi */
+}
+
+/* Kaynak Bağlantıları İçin Stil */
+.vulnerability-item a {
+    text-decoration: none;
+  
+    font-weight: bold; /* Link yazısını belirginleştir */
+}
+
+.vulnerability-item a:hover {
+    text-decoration: none;
+}
+
+/* Başlık, Açıklama ve Çözüm Alanları İçin Genel Stil */
+.vulnerability-item h4 {
+    font-size: 20px; /* Başlık boyutunu belirginleştirecek şekilde büyütüyoruz */
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Vurgulamak için hover efektleri */
+
+
+/* Bağlantı stili - Navbar bağlantılarını etkilememesi için sadece .vulnerability-item'a özgü yapıldı */
+.vulnerability-item a {
+    color: #007bff;  /* Link renk */
+    text-decoration: none;
+}
+
+.vulnerability-item a:hover {
+    text-decoration: none;  /* Hoverda altı çizili */
+}
+
+/* Navbar Bağlantıları için Stil - Bu kurallar navbar'daki bağlantıları etkilemeyecek */
+.navbar a {
+    color: #000;  /* Navbardaki bağlantı rengi */
+    text-decoration: none; /* Altı çizili olmasın */
+}
+
+/* Form alanlarının dışındaki border için daha koyu ve kalın siyah transparanlık */
+.form-control {
+    border: 3px solid rgba(0, 0, 0, 0.7); /* Siyah, %70 opaklıkta ve daha kalın border */
+    background-color: transparent; /* Arka plan transparan */
+    color: #fff; /* Yazı rengini beyaz yap */
+    padding: 10px; /* İç boşluk, form alanlarının daha rahat görünmesini sağlar */
+    margin-bottom: 20px; /* Form elemanları arasındaki boşluğu kontrol et */
+}
+
+/* Form alanlarında focus olduğunda border renginin daha koyu ve kalın olması */
+.form-control:focus {
+    border-color: rgba(0, 0, 0, 1); /* Tam siyah border */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Hafif bir gölge efekti */
 }
