@@ -4,3 +4,6 @@ django-crispy-forms
 crispy-bootstrap4
 django-ckeditor-5
 django-cleanup
+python-decouple
+python-owasp-zap-v2.4
+django-ckeditor
